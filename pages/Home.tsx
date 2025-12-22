@@ -2,26 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, FileText, Award, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import StaticVisual from '../components/StaticVisual.tsx';
 
-const CAROUSEL_IMAGES = [
-  // 1. High Voltage Power Lines (Grid Infrastructure)
-  'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80',
-  
-  // 2. Tesla/EV Structure (Complex Object Disassembly/Structure)
-  'https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80',
-  
-  // 3. Offshore Oil Platform (Industrial Data)
-  'https://images.unsplash.com/photo-1551651765-5c1236113c75?auto=format&fit=crop&q=80',
-  
-  // 4. High Speed Train Station/Tracks from above (Scale & Logistics)
-  // Switched to an aerial view showing multiple tracks/trains context
-  'https://images.unsplash.com/photo-1527685216219-c72473855a01?auto=format&fit=crop&q=80',
-  
-  // 5. Particle Accelerator / Scientific Data (The "Math/Physics" visual)
-  'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80',
-  
-  // 6. Financial Data / Quant Trading Screens
-  'https://images.unsplash.com/photo-1611974765270-ca1258634369?auto=format&fit=crop&q=80'
+const CAROUSEL_TYPES: ('infrastructure' | 'platform' | 'nodes' | 'tracks' | 'particles' | 'chart')[] = [
+  'infrastructure',
+  'platform',
+  'nodes',
+  'tracks',
+  'particles',
+  'chart'
 ];
 
 const Home: React.FC = () => {
@@ -29,20 +18,12 @@ const Home: React.FC = () => {
   const h = langData.hero;
   const t = langData.home;
 
-  const [currentImageIdx, setCurrentImageIdx] = useState(0);
+  const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
-    // 1. Preload all images to minimize loading artifacts during carousel switch
-    CAROUSEL_IMAGES.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
-
-    // 2. Set up the carousel interval (5 seconds)
     const interval = setInterval(() => {
-        setCurrentImageIdx(prev => (prev + 1) % CAROUSEL_IMAGES.length);
+        setCurrentIdx(prev => (prev + 1) % CAROUSEL_TYPES.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -52,18 +33,16 @@ const Home: React.FC = () => {
       <div className="relative h-screen w-full overflow-hidden bg-brand-900">
         
         {/* Carousel Background Layers */}
-        {/* We render all images stacked, managing visibility via opacity. 
-            This avoids the 'flash of black' by ensuring the image is in the DOM. */}
-        {CAROUSEL_IMAGES.map((src, index) => (
+        {CAROUSEL_TYPES.map((type, index) => (
           <div 
-            key={src}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentImageIdx ? 'opacity-100' : 'opacity-0'}`}
-            style={{ backgroundImage: `url('${src}')` }}
-            aria-hidden="true"
-          ></div>
+            key={type}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIdx ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <StaticVisual type={type} className="w-full h-full" />
+          </div>
         ))}
         
-        {/* Overlay gradient to ensure text readability on any image */}
+        {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-900/90 to-brand-900/40 z-10"></div>
         
         {/* Content */}
@@ -104,11 +83,14 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {t.news_items && t.news_items.map((item: any, index: number) => (
               <div key={index} className="group cursor-pointer">
-                <div className="overflow-hidden mb-4 h-64">
+                <div className="overflow-hidden mb-4 h-64 bg-slate-200 relative">
+                  {/* Using standard img tag for News content as requested */}
                   <img 
-                    src={`https://picsum.photos/id/${item.img}/600/400`} 
-                    alt={item.title} 
+                    src={item.img} 
+                    alt={item.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
                 <div className="text-xs text-brand-accent font-bold uppercase tracking-wider mb-2">News</div>

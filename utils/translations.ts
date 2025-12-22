@@ -55,9 +55,21 @@ export const translations = {
       read_report: '阅读报告',
       contribute: '参与贡献',
       news_items: [
-        { title: "2024 AI数据治理白皮书正式发布", date: "2024-05-15", img: "1" },
-        { title: "第四届数智杯大赛启动仪式在京举行", date: "2024-05-10", img: "20" },
-        { title: "与某央企在Palantir研究和探索方面达成战略合作", date: "2024-04-28", img: "26" }
+        { 
+          title: "2024 AI数据治理白皮书正式发布", 
+          date: "2024-05-15", 
+          img: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=800" 
+        },
+        { 
+          title: "第四届数智杯大赛启动仪式在京举行", 
+          date: "2024-05-10", 
+          img: "https://mmbiz.qpic.cn/sz_mmbiz_png/8PQre9BGSSBugIfJMkm5mJ3S7ibgT7rRia67vEsutFv6UyDfR20JuibZdvFc1vvvdWvu3dPpib14RibtmXiamhMUVHfA/640?from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" 
+        },
+        { 
+          title: "与某央企在Palantir研究和探索方面达成战略合作", 
+          date: "2024-04-28", 
+          img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" 
+        }
       ]
     },
     indices: {
@@ -93,7 +105,7 @@ export const translations = {
           title: "Palantir Foundry 的本体层设计与数据治理启示",
           summary: "深入剖析 Palantir 如何通过 Ontology 动态建模实现业务与数据的无缝连接，以及对传统元数据管理的颠覆。",
           date: "2024-05-12",
-          image: "55"
+          image: "photo-1518186285589-2f7649de83e0"
         },
         {
           id: 2,
@@ -101,7 +113,7 @@ export const translations = {
           title: "从 Data Fabric 到 ChatBI：生成式 AI 驱动的数据消费革命",
           summary: "探讨 Data Fabric 架构如何为 ChatBI 提供可信的数据底座，以及 LLM 在 Text-to-SQL 中的最新应用挑战。",
           date: "2024-05-08",
-          image: "60"
+          image: "photo-1551288049-bbbda536339a"
         },
         {
           id: 3,
@@ -109,7 +121,7 @@ export const translations = {
           title: "大模型时代的数据毒化防御体系构建",
           summary: "针对 AI 训练数据集的安全风险，提出基于主动元数据的数据清洗与血缘追踪防御机制。",
           date: "2024-04-30",
-          image: "180"
+          image: "photo-1563986768609-322da13575f3"
         },
         {
           id: 4,
@@ -117,7 +129,7 @@ export const translations = {
           title: "Atlan：现代数据协作平台的崛起之路",
           summary: "解析 FDE 新锐厂商 Atlan 如何通过“嵌入式协作”重定义元数据管理体验。",
           date: "2024-04-22",
-          image: "3"
+          image: "photo-1552664730-d307ca884978"
         },
         {
           id: 5,
@@ -125,7 +137,7 @@ export const translations = {
           title: "构建企业级智能知识库：RAG 架构下的数据治理关键点",
           summary: "非结构化数据治理是 RAG 成功的关键。本文详述了向量化前的数据分块与清洗策略。",
           date: "2024-04-15",
-          image: "119"
+          image: "photo-1454165833772-d996d4ad50a7"
         },
         {
           id: 6,
@@ -133,7 +145,7 @@ export const translations = {
           title: "DataOps 实践指南：自动化数据流水线中的质量门禁",
           summary: "如何在 CI/CD 流程中嵌入数据质量检测？来自一线互联网大厂的最佳实践分享。",
           date: "2024-04-10",
-          image: "201"
+          image: "photo-1460925895917-afdab827c52f"
         }
       ]
     },
@@ -305,9 +317,21 @@ export const translations = {
       read_report: 'Read Report',
       contribute: 'Contribute',
       news_items: [
-        { title: "2024 AI Data Governance Whitepaper Released", date: "2024-05-15", img: "1" },
-        { title: "4th Digital Intelligence Cup Launch Ceremony in Beijing", date: "2024-05-10", img: "20" },
-        { title: "Strategic Cooperation with Central SOE on Palantir Research", date: "2024-04-28", img: "26" }
+        { 
+          title: "2024 AI Data Governance Whitepaper Released", 
+          date: "2024-05-15", 
+          img: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=800" 
+        },
+        { 
+          title: "4th Digital Intelligence Cup Launch Ceremony in Beijing", 
+          date: "2024-05-10", 
+          img: "https://mmbiz.qpic.cn/sz_mmbiz_png/8PQre9BGSSBugIfJMkm5mJ3S7ibgT7rRia67vEsutFv6UyDfR20JuibZdvFc1vvvdWvu3dPpib14RibtmXiamhMUVHfA/640?from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" 
+        },
+        { 
+          title: "Strategic Cooperation with Central SOE on Palantir Research", 
+          date: "2024-04-28", 
+          img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" 
+        }
       ]
     },
     indices: {
@@ -343,7 +367,7 @@ export const translations = {
           title: "Palantir Foundry's Ontology Design and Governance Implications",
           summary: "An in-depth analysis of how Palantir connects business and data seamlessly through dynamic Ontology modeling, and its disruption of traditional metadata management.",
           date: "2024-05-12",
-          image: "55"
+          image: "photo-1518186285589-2f7649de83e0"
         },
         {
           id: 2,
@@ -351,7 +375,7 @@ export const translations = {
           title: "From Data Fabric to ChatBI: The GenAI-Driven Data Consumption Revolution",
           summary: "Exploring how Data Fabric architecture provides a trusted data foundation for ChatBI, and the latest challenges of LLMs in Text-to-SQL applications.",
           date: "2024-05-08",
-          image: "60"
+          image: "photo-1551288049-bbbda536339a"
         },
         {
           id: 3,
@@ -359,7 +383,7 @@ export const translations = {
           title: "Building a Defense System Against Data Poisoning in the LLM Era",
           summary: "Addressing security risks in AI training datasets by proposing a defense mechanism based on active metadata for data cleansing and lineage tracking.",
           date: "2024-04-30",
-          image: "180"
+          image: "photo-1563986768609-322da13575f3"
         },
         {
           id: 4,
@@ -367,7 +391,7 @@ export const translations = {
           title: "Atlan: The Rise of the Modern Data Collaboration Platform",
           summary: "Analyzing how emerging FDE vendor Atlan is redefining the metadata management experience through 'embedded collaboration'.",
           date: "2024-04-22",
-          image: "3"
+          image: "photo-1552664730-d307ca884978"
         },
         {
           id: 5,
@@ -375,7 +399,7 @@ export const translations = {
           title: "Building an Enterprise Intelligent Knowledge Base: Governance Keys in RAG",
           summary: "Unstructured data governance is key to RAG success. This article details data chunking and cleansing strategies prior to vectorization.",
           date: "2024-04-15",
-          image: "119"
+          image: "photo-1454165833772-d996d4ad50a7"
         },
         {
           id: 6,
@@ -383,7 +407,7 @@ export const translations = {
           title: "DataOps Practice Guide: Quality Gates in Automated Data Pipelines",
           summary: "How to embed data quality checks in CI/CD processes? Best practices shared from top-tier internet companies.",
           date: "2024-04-10",
-          image: "201"
+          image: "photo-1460925895917-afdab827c52f"
         }
       ]
     },

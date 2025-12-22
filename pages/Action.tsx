@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, BarChart2, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import StaticVisual from '../components/StaticVisual.tsx';
 
 const Action: React.FC = () => {
   const { langData } = useLanguage();
@@ -47,7 +48,7 @@ const Action: React.FC = () => {
             </button>
           </div>
           <div className="md:w-1/2 h-80 bg-slate-100 relative overflow-hidden group">
-            <img src="https://picsum.photos/id/60/800/600" alt="DCMM" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+            <StaticVisual type="security" className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity" />
           </div>
         </div>
 
@@ -75,7 +76,7 @@ const Action: React.FC = () => {
             </button>
           </div>
           <div className="md:w-1/2 h-80 bg-slate-100 relative overflow-hidden group">
-             <img src="https://picsum.photos/id/3/800/600" alt="Consulting" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+             <StaticVisual type="platform" className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity" />
           </div>
         </div>
 

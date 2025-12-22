@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import StaticVisual from '../components/StaticVisual.tsx';
 
 const Research: React.FC = () => {
   const { langData, language } = useLanguage();
@@ -8,13 +9,10 @@ const Research: React.FC = () => {
   const categories: string[] = t.categories;
   const articles = t.articles;
 
-  // Since categories change when language changes, we need to map the selected category 
-  // or reset it. For simplicity, if language changes, we reset to the first category (All).
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const location = useLocation();
 
   useEffect(() => {
-    // Reset category on language switch or initial load to first category if current is invalid
     if (!categories.includes(activeCategory)) {
         setActiveCategory(categories[0]);
     }
@@ -31,6 +29,13 @@ const Research: React.FC = () => {
   const filteredArticles = activeCategory === categories[0]
     ? articles 
     : articles.filter((art: any) => art.category === activeCategory);
+
+  const getVisualType = (category: string, id: number): any => {
+    if (category.includes('Palantir')) return 'platform';
+    if (category.includes('AI')) return 'nodes';
+    if (category.includes('FDE')) return 'grid';
+    return id % 2 === 0 ? 'circuit' : 'particles';
+  };
 
   return (
     <div className="pt-24 pb-20 bg-white min-h-screen">
@@ -63,11 +68,10 @@ const Research: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredArticles.map((article: any) => (
             <article key={article.id} className="flex flex-col group cursor-pointer">
-              <div className="overflow-hidden mb-5">
-                <img 
-                  src={`https://picsum.photos/id/${article.image}/800/500`} 
-                  alt={article.title} 
-                  className="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0"
+              <div className="overflow-hidden mb-5 bg-slate-200 aspect-[16/10]">
+                <StaticVisual 
+                  type={getVisualType(article.category, article.id)} 
+                  className="w-full h-full transform group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
               <div className="flex-1">

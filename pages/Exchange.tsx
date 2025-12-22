@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, MapPin, Users, Trophy } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import StaticVisual from '../components/StaticVisual.tsx';
 
 const Exchange: React.FC = () => {
   const { langData } = useLanguage();
@@ -36,7 +37,7 @@ const Exchange: React.FC = () => {
                   <div className="text-sm text-slate-400">{t.contest.stat_enterprises}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white">¥100w</div>
+                  <div className="text-3xl font-bold text-white">¥100w+</div>
                   <div className="text-sm text-slate-400">{t.contest.stat_prize}</div>
                 </div>
               </div>
@@ -45,7 +46,7 @@ const Exchange: React.FC = () => {
               </button>
             </div>
             <div className="relative h-64 lg:h-auto">
-              <img src="https://picsum.photos/id/175/800/800" alt="Contest" className="w-full h-full object-cover opacity-80" />
+              <StaticVisual type="particles" className="w-full h-full opacity-60" />
             </div>
           </div>
         </div>
@@ -84,8 +85,8 @@ const Exchange: React.FC = () => {
              <div className="space-y-6">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="group cursor-pointer">
-                    <div className="h-40 overflow-hidden mb-3">
-                      <img src={`https://picsum.photos/id/${i + 50}/400/250`} alt="Event" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                    <div className="h-40 overflow-hidden mb-3 bg-slate-200">
+                      <StaticVisual type={i === 1 ? 'grid' : i === 2 ? 'nodes' : 'circuit'} className="w-full h-full group-hover:scale-105 transition-transform" />
                     </div>
                     <h4 className="font-bold text-brand-900 group-hover:text-brand-accent transition-colors">
                       {t.events.past_list_title}
