@@ -1,14 +1,14 @@
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Indices from './pages/Indices';
-import Research from './pages/Research';
-import Exchange from './pages/Exchange';
-import Learning from './pages/Learning';
-import Action from './pages/Action';
-import { LanguageProvider } from './contexts/LanguageContext';
+import Header from './components/Header.tsx';
+import Footer from './components/Footer.tsx';
+import Home from './pages/Home.tsx';
+import Indices from './pages/Indices.tsx';
+import Research from './pages/Research.tsx';
+import Exchange from './pages/Exchange.tsx';
+import Learning from './pages/Learning.tsx';
+import Action from './pages/Action.tsx';
+import { LanguageProvider } from './contexts/LanguageContext.tsx';
 
 // Scroll to top component with hash support
 const ScrollToTop = () => {
@@ -37,7 +37,7 @@ const App: React.FC = () => {
     <LanguageProvider>
       <HashRouter>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-white text-brand-900">
           <Header />
           <main className="flex-grow">
             <Routes>

@@ -30,27 +30,58 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #ffffff;
-        color: #0F172A;
+        background-color: #0F172A; /* 设置为深色背景以消除白屏感 */
+        color: #ffffff;
+        margin: 0;
       }
       h1, h2, h3, h4, h5, h6 {
         font-family: '"Playfair Display"', serif;
       }
+      /* 预加载背景样式 */
+      #root {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .loader-container {
+        text-align: center;
+        opacity: 0.8;
+      }
+      .loader-logo {
+        font-family: '"Playfair Display"', serif;
+        font-size: 2rem;
+        font-bold: true;
+        color: #0EA5E9;
+        margin-bottom: 1rem;
+        letter-spacing: 0.1em;
+      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "recharts": "https://esm.sh/recharts@^3.6.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1"
+      }
+    }
+    </script>
+  </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- 页面初次加载或刷新时的优雅占位符 -->
+      <div class="loader-container">
+        <div class="loader-logo">AI DGI</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.2em;">
+          Initializing Data Governance Excellence...
+        </div>
+      </div>
+    </div>
+    <!-- 显式添加入口脚本以支持本地预览 -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
