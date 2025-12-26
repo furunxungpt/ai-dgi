@@ -5,14 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI数据治理研究院 | AI Data Governance Institute</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['"Playfair Display"', 'serif'],
+              // 现代系统无衬线字体堆栈：兼容所有现代 OS，无需外部加载
+              sans: [
+                'ui-sans-serif', 
+                'system-ui', 
+                '-apple-system', 
+                'BlinkMacSystemFont', 
+                '"Segoe UI"', 
+                'Roboto', 
+                '"Helvetica Neue"', 
+                'Arial', 
+                '"Noto Sans"', 
+                'sans-serif', 
+                '"Apple Color Emoji"', 
+                '"Segoe UI Emoji"', 
+                '"Segoe UI Symbol"', 
+                '"Noto Color Emoji"'
+              ],
+              // 经典系统衬线字体堆栈：Georgia 具备极高的可读性和类似 Playfair 的权威感
+              serif: [
+                'ui-serif', 
+                'Georgia', 
+                'Cambria', 
+                '"Times New Roman"', 
+                'Times', 
+                'serif'
+              ],
             },
             colors: {
               brand: {
@@ -29,13 +52,15 @@
     </script>
     <style>
       body {
-        font-family: 'Inter', sans-serif;
-        background-color: #0F172A; /* 设置为深色背景以消除白屏感 */
+        /* 使用配置好的 sans 堆栈 */
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: #0F172A; 
         color: #ffffff;
         margin: 0;
       }
       h1, h2, h3, h4, h5, h6 {
-        font-family: '"Playfair Display"', serif;
+        /* 使用配置好的 serif 堆栈 */
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
       }
       /* 预加载背景样式 */
       #root {
@@ -50,9 +75,9 @@
         opacity: 0.8;
       }
       .loader-logo {
-        font-family: '"Playfair Display"', serif;
+        font-family: ui-serif, Georgia, serif;
         font-size: 2rem;
-        font-bold: true;
+        font-weight: 700;
         color: #0EA5E9;
         margin-bottom: 1rem;
         letter-spacing: 0.1em;
@@ -81,7 +106,6 @@
         </div>
       </div>
     </div>
-    <!-- 显式添加入口脚本以支持本地预览 -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>

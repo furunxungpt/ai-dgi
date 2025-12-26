@@ -85,9 +85,10 @@ const Learning: React.FC = () => {
               {t.bootcamp.desc}
             </p>
             <div className="flex -space-x-2 mb-6">
-               <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/id/1005/100/100" alt="Avatar" />
-               <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/id/1011/100/100" alt="Avatar" />
-               <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/id/1027/100/100" alt="Avatar" />
+               {/* Fixed: Replaced external images with colored SVG placeholders */}
+               <div className="w-8 h-8 rounded-full border-2 border-white bg-brand-900 flex items-center justify-center text-[10px] text-white font-bold">L</div>
+               <div className="w-8 h-8 rounded-full border-2 border-white bg-brand-accent flex items-center justify-center text-[10px] text-white font-bold">W</div>
+               <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-400 flex items-center justify-center text-[10px] text-white font-bold">Z</div>
                <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] text-slate-600 font-bold">+2k</div>
             </div>
             <a href="#" className="text-brand-accent font-medium text-sm hover:underline">{t.bootcamp.link} &rarr;</a>
