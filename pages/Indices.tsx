@@ -236,16 +236,16 @@ const Indices: React.FC = () => {
                       </div>
                       
                       {/* Bubbles Container */}
-                      <div className="flex-grow flex flex-col relative z-10">
+                      <div className="flex-grow flex flex-col relative z-0">
                         
                         {/* Central Bubble (Top Half) - White BG */}
-                        <div className="flex-1 flex items-center justify-center bg-white/50 p-4 relative">
-                           {/* Horizontal Line through Central Bubble */}
-                           <div className="absolute top-1/2 left-0 w-full h-px bg-slate-200 z-0"></div>
+                        <div className="flex-1 relative flex items-center justify-center p-4 bg-white border-b border-slate-200">
+                           {/* Horizontal Axis Line through Central Bubble - Perfectly centered */}
+                           <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-300 transform -translate-y-1/2 z-0"></div>
                            
                            <div 
                               style={{ width: `${getBubbleSize(item.central.pct)}px`, height: `${getBubbleSize(item.central.pct)}px` }} 
-                              className="rounded-full bg-brand-900 text-white flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105 z-10"
+                              className="relative z-10 rounded-full bg-brand-900 text-white flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105"
                            >
                              <span className="text-xl md:text-2xl font-bold leading-none">{item.central.count}</span>
                              <span className="text-[10px] md:text-xs opacity-80 mt-1">{item.central.pct}%</span>
@@ -253,13 +253,13 @@ const Indices: React.FC = () => {
                         </div>
 
                         {/* Local Bubble (Bottom Half) - Slight Off-white BG for distinction */}
-                        <div className="flex-1 flex items-center justify-center bg-slate-50/80 p-4 border-t border-slate-100 relative">
-                           {/* Horizontal Line through Local Bubble */}
-                           <div className="absolute top-1/2 left-0 w-full h-px bg-slate-300 z-0"></div>
+                        <div className="flex-1 relative flex items-center justify-center bg-slate-50 p-4">
+                           {/* Horizontal Axis Line through Local Bubble - Perfectly centered */}
+                           <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-300 transform -translate-y-1/2 z-0"></div>
 
                            <div 
                               style={{ width: `${getBubbleSize(item.local.pct)}px`, height: `${getBubbleSize(item.local.pct)}px` }} 
-                              className="rounded-full bg-brand-accent text-white flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105 z-10"
+                              className="relative z-10 rounded-full bg-brand-accent text-white flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105"
                            >
                              <span className="text-xl md:text-2xl font-bold leading-none">{item.local.count}</span>
                              <span className="text-[10px] md:text-xs opacity-80 mt-1">{item.local.pct}%</span>
