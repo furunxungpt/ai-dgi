@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
+import { X, Building2, BarChart3, TrendingUp } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const indicesData = [
@@ -13,8 +14,9 @@ const indicesData = [
 const Indices: React.FC = () => {
   const { langData, language } = useLanguage();
   const t = langData.indices;
-
   const isEn = language === 'en';
+  
+  const [showSoeDetail, setShowSoeDetail] = useState(false);
 
   const industryData = [
     { name: isEn ? 'Finance' : '金融', value: 88, benchmark: 75 },
@@ -33,8 +35,41 @@ const Indices: React.FC = () => {
     { name: isEn ? 'West' : '中西部', value: 70 },
   ];
 
+  // Updated Data for Central vs Local SOE Comparison with Counts
+  const soeComparisonData = [
+    { 
+      level: isEn ? 'Level 5' : '五级', 
+      label: isEn ? 'Optimized' : '优化级', 
+      central: { pct: 4.8, count: 5 }, 
+      local: { pct: 0.9, count: 12 } 
+    },
+    { 
+      level: isEn ? 'Level 4' : '四级', 
+      label: isEn ? 'Managed' : '量化管理级', 
+      central: { pct: 22.5, count: 24 }, 
+      local: { pct: 8.4, count: 115 } 
+    },
+    { 
+      level: isEn ? 'Level 3' : '三级', 
+      label: isEn ? 'Defined' : '稳健级', 
+      central: { pct: 48.2, count: 51 }, 
+      local: { pct: 38.5, count: 528 } 
+    },
+    { 
+      level: isEn ? 'Below L3' : '三级以下', 
+      label: isEn ? 'Initial' : '初始/受管理', 
+      central: { pct: 24.5, count: 26 }, 
+      local: { pct: 52.2, count: 716 } 
+    },
+  ];
+
+  const getBubbleSize = (pct: number) => {
+    // Map 0-100 to roughly 60px-130px for visualization
+    return 60 + (Math.sqrt(pct) / 10) * 90;
+  };
+
   return (
-    <div className="pt-24 pb-20 bg-slate-50 min-h-screen">
+    <div className="pt-24 pb-20 bg-slate-50 min-h-screen relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -69,6 +104,7 @@ const Indices: React.FC = () => {
           </div>
         </div>
 
+        {/* Breakdown Section */}
         <div id="breakdown" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Industry Index */}
@@ -108,22 +144,144 @@ const Indices: React.FC = () => {
 
         {/* Special Reports Links */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-           <div id="methodology" className="bg-white p-6 border-l-4 border-brand-900 shadow-sm scroll-mt-24">
-             <h4 className="font-bold text-lg mb-2">{t.methodology}</h4>
+           <div id="methodology" className="bg-white p-6 border-l-4 border-brand-900 shadow-sm scroll-mt-24 transition-transform hover:-translate-y-1">
+             <div className="flex items-center mb-3">
+               <BarChart3 className="w-6 h-6 text-brand-900 mr-2" />
+               <h4 className="font-bold text-lg">{t.methodology}</h4>
+             </div>
              <p className="text-sm text-slate-500 mb-4">{t.methodology_desc}</p>
-             <a href="#" className="text-brand-accent text-sm font-semibold hover:underline">{t.download_whitepaper} &rarr;</a>
+             <a href="#" className="text-brand-accent text-sm font-semibold hover:underline flex items-center">{t.download_whitepaper} &rarr;</a>
            </div>
-           <div id="special" className="bg-white p-6 border-l-4 border-brand-900 shadow-sm scroll-mt-24">
-             <h4 className="font-bold text-lg mb-2">{t.soe_index}</h4>
-             <p className="text-sm text-slate-500 mb-4">{t.soe_desc}</p>
-             <a href="#" className="text-brand-accent text-sm font-semibold hover:underline">{t.view_details} &rarr;</a>
+           
+           {/* Central SOE Index Card */}
+           <div 
+             id="special" 
+             className="bg-white p-6 border-l-4 border-brand-accent shadow-sm scroll-mt-24 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 group relative overflow-hidden"
+             onClick={() => setShowSoeDetail(true)}
+           >
+             <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Building2 size={64} />
+             </div>
+             <div className="relative z-10">
+                <div className="flex items-center mb-3">
+                  <Building2 className="w-6 h-6 text-brand-accent mr-2" />
+                  <h4 className="font-bold text-lg group-hover:text-brand-accent transition-colors">{t.soe_index}</h4>
+                </div>
+                <p className="text-sm text-slate-500 mb-4 pr-8">{t.soe_desc}</p>
+                <button className="text-brand-accent text-sm font-semibold group-hover:underline flex items-center">
+                  {t.view_details} &rarr;
+                </button>
+             </div>
            </div>
-           <div className="bg-white p-6 border-l-4 border-brand-900 shadow-sm">
-             <h4 className="font-bold text-lg mb-2">{t.public_co_index}</h4>
+
+           <div className="bg-white p-6 border-l-4 border-slate-300 shadow-sm transition-transform hover:-translate-y-1">
+             <div className="flex items-center mb-3">
+               <TrendingUp className="w-6 h-6 text-slate-600 mr-2" />
+               <h4 className="font-bold text-lg text-slate-700">{t.public_co_index}</h4>
+             </div>
              <p className="text-sm text-slate-500 mb-4">{t.public_co_desc}</p>
-             <a href="#" className="text-brand-accent text-sm font-semibold hover:underline">{t.view_details} &rarr;</a>
+             <a href="#" className="text-brand-accent text-sm font-semibold hover:underline flex items-center">{t.view_details} &rarr;</a>
            </div>
         </div>
+
+        {/* Modal / Detailed View for Central SOE Index */}
+        {showSoeDetail && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-white w-full max-w-6xl shadow-2xl rounded-sm overflow-hidden animate-in zoom-in-95 duration-200 flex flex-col max-h-[95vh]">
+              
+              {/* Modal Header */}
+              <div className="bg-brand-900 px-8 py-6 flex justify-between items-center text-white shrink-0 border-b border-brand-800">
+                <div>
+                  <h3 className="text-2xl font-serif font-bold flex items-center">
+                    <Building2 className="mr-3" />
+                    {isEn ? 'Central SOE DCMM Special Topic' : '央国企DCMM专题'}
+                  </h3>
+                  <p className="text-brand-100 text-sm mt-1 opacity-80">
+                     {isEn ? 'Data analysis of DCMM implementation in Central SOE and Local SOE' : '央企及地方国企DCMM贯标数据分析'}
+                  </p>
+                </div>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setShowSoeDetail(false); }}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-8 bg-white overflow-y-auto flex-grow flex flex-col">
+                
+                {/* Legend */}
+                <div className="flex justify-center space-x-12 mb-8 shrink-0">
+                   <div className="flex items-center">
+                     <div className="w-4 h-4 rounded-full bg-brand-900 mr-3 shadow-sm"></div>
+                     <span className="font-bold text-brand-900 text-sm tracking-wide">{isEn ? 'Central SOE' : '央企'}</span>
+                   </div>
+                   <div className="flex items-center">
+                     <div className="w-4 h-4 rounded-full bg-brand-accent mr-3 shadow-sm"></div>
+                     <span className="font-bold text-brand-900 text-sm tracking-wide">{isEn ? 'Local SOE' : '地方国企'}</span>
+                   </div>
+                </div>
+
+                {/* Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 flex-grow min-h-[400px]">
+                  {soeComparisonData.map((item, index) => (
+                    <div key={index} className="flex flex-col h-full bg-white border border-slate-200 shadow-sm rounded-sm overflow-hidden relative">
+                      {/* Level Title */}
+                      <div className="text-center py-4 border-b border-slate-100 bg-white z-10 relative">
+                        <span className="text-lg font-bold text-brand-900 block">
+                          {item.level}
+                        </span>
+                        <span className="text-xs text-slate-500">{item.label}</span>
+                      </div>
+                      
+                      {/* Bubbles Container */}
+                      <div className="flex-grow flex flex-col relative z-10">
+                        
+                        {/* Central Bubble (Top Half) - White BG */}
+                        <div className="flex-1 flex items-center justify-center bg-white/50 p-4 relative">
+                           {/* Horizontal Line through Central Bubble */}
+                           <div className="absolute top-1/2 left-0 w-full h-px bg-slate-200 z-0"></div>
+                           
+                           <div 
+                              style={{ width: `${getBubbleSize(item.central.pct)}px`, height: `${getBubbleSize(item.central.pct)}px` }} 
+                              className="rounded-full bg-brand-900 text-white flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105 z-10"
+                           >
+                             <span className="text-xl md:text-2xl font-bold leading-none">{item.central.count}</span>
+                             <span className="text-[10px] md:text-xs opacity-80 mt-1">{item.central.pct}%</span>
+                           </div>
+                        </div>
+
+                        {/* Local Bubble (Bottom Half) - Slight Off-white BG for distinction */}
+                        <div className="flex-1 flex items-center justify-center bg-slate-50/80 p-4 border-t border-slate-100 relative">
+                           {/* Horizontal Line through Local Bubble */}
+                           <div className="absolute top-1/2 left-0 w-full h-px bg-slate-300 z-0"></div>
+
+                           <div 
+                              style={{ width: `${getBubbleSize(item.local.pct)}px`, height: `${getBubbleSize(item.local.pct)}px` }} 
+                              className="rounded-full bg-brand-accent text-white flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105 z-10"
+                           >
+                             <span className="text-xl md:text-2xl font-bold leading-none">{item.local.count}</span>
+                             <span className="text-[10px] md:text-xs opacity-80 mt-1">{item.local.pct}%</span>
+                           </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-8 text-center border-t border-slate-200 pt-6 shrink-0">
+                   <p className="text-slate-500 text-sm font-medium">
+                     {isEn ? 'Data Source: China Information Technology Industry Federation, AI Data Governance Institute' : '数据来源：中国电子行业信息联合会，AI数据治理研究院'}
+                   </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );

@@ -82,9 +82,9 @@ export const translations = {
       methodology: '研究方法论',
       methodology_desc: '深入了解 DCMM 指数的计算模型与权重分配体系。',
       download_whitepaper: '下载白皮书',
-      soe_index: '国企专题指数',
-      soe_desc: '针对国有企业数字化转型特点的专项数据治理评估。',
-      public_co_index: '上市公司指数',
+      soe_index: '央国企专题',
+      soe_desc: '针对中央企业及国有企业数字化转型特点的专项数据治理评估。',
+      public_co_index: '上市公司专题',
       public_co_desc: 'A股上市公司数据资产入表与治理能力关联分析。',
       view_details: '查看详情',
       current_index: '当前指数',
@@ -200,65 +200,65 @@ export const translations = {
         btn_submit: '提交新词条'
       },
       training: {
-        title: 'CDP 认证培训',
-        desc: 'Certified Data Practitioner. 系统化的数据从业者能力认证，涵盖 DAMA 知识体系与实战技能。',
-        levels: ['CDP-A 助理数据师', 'CDP-P 专业数据师', 'CDP-M 数据管理专家'],
-        link: '查看课表'
+        title: 'CDP Certification Training',
+        desc: 'Certified Data Practitioner. A systematic competency certification for data practitioners, covering the DAMA body of knowledge and practical skills.',
+        levels: ['CDP-A Associate', 'CDP-P Professional', 'CDP-M Master'],
+        link: 'View Schedule'
       },
       webinar: {
-        title: '大咖 Webinar',
-        desc: '每月邀请行业 CTO/CDO 在线直播，深度复盘一线实战案例，解答您的治理困惑。',
-        next_label: '下期预告：06/20',
-        next_topic: '某国有银行数据中台建设复盘',
-        link: '预约直播'
+        title: 'Expert Webinar',
+        desc: 'Monthly live streams with industry CTOs/CDOs, deeply reviewing frontline practical cases and answering your governance questions.',
+        next_label: 'Next Up: 06/20',
+        next_topic: 'Review of Data Middle Platform Construction in a State-owned Bank',
+        link: 'Book Live Stream'
       },
       bootcamp: {
-        title: '实战训练营',
-        desc: '3天2夜封闭式训练。通过沙盘模拟、真实数据环境演练，手把手教您搭建数据治理平台。',
-        link: '了解营期'
+        title: 'Practical Bootcamp',
+        desc: '3-Day/2-Night closed training. Hands-on teaching to build a data governance platform through sand table simulations and real data environments.',
+        link: 'Learn More'
       }
     },
     action: {
       hero_title: '从战略到执行',
-      hero_desc: '我们不仅仅提供报告，更与企业并肩作战。通过专业的咨询服务与工具导入，确保数据治理成效落地。',
+      hero_desc: 'We provide more than just reports; we fight alongside enterprises. Through professional consulting services and tool implementation, we ensure data governance results land effectively.',
       dcmm: {
-        label: '国家标准认证',
-        title: 'DCMM 贯标服务',
-        desc: '依据 GB/T 36073-2018《数据管理能力成熟度评估模型》，为企业提供从差距分析、制度建设、流程优化到模拟评估的全周期贯标服务。',
-        items: ['成熟度等级评估', '数据管理制度体系建设', '迎检材料辅导', '模拟评审与整改'],
-        btn: '预约诊断'
+        label: 'National Standard Certification',
+        title: 'DCMM Implementation Service',
+        desc: 'Based on GB/T 36073-2018 "Data Management Capability Maturity Assessment Model", we provide full-cycle implementation services from gap analysis and system construction to process optimization and mock assessment.',
+        items: ['Maturity Level Assessment', 'Data Mgmt System Construction', 'Inspection Material Guidance', 'Mock Review & Rectification'],
+        btn: 'Book Diagnosis'
       },
       consulting: {
-        label: '定制化咨询',
-        title: '企业数据治理咨询',
-        desc: '针对企业数字化转型的痛点，提供主数据管理、数据质量提升、数据资产入表等专项咨询服务。结合 AI 技术，打造自动化的治理体系。',
-        items: ['数据资产盘点与目录构建', '数据标准与质量体系', '数据安全与隐私合规', '数据中台架构规划'],
-        btn: '获取方案'
+        label: 'Customized Consulting',
+        title: 'Enterprise Data Governance Consulting',
+        desc: 'Addressing pain points in digital transformation, providing specialized consulting on master data management, data quality improvement, and data asset valuation. Combined with AI technology to build automated governance systems.',
+        items: ['Data Asset Inventory & Catalog', 'Data Standards & Quality System', 'Data Security & Privacy Compliance', 'Data Middle Platform Architecture'],
+        btn: 'Get Solution'
       },
       methodology: {
-        title: '我们的方法论',
+        title: 'Our Methodology',
         steps: [
-          { title: "评估 (Assess)", desc: "现状诊断与差距分析" },
-          { title: "规划 (Plan)", desc: "顶层设计与路线图制定" },
-          { title: "实施 (Implement)", desc: "体系建设与工具落地" },
-          { title: "运营 (Operate)", desc: "持续监控与长效机制" },
+          { title: "Assess", desc: "Status Diagnosis & Gap Analysis" },
+          { title: "Plan", desc: "Top-level Design & Roadmap" },
+          { title: "Implement", desc: "System Construction & Tooling" },
+          { title: "Operate", desc: "Continuous Monitoring & Mechanism" },
         ]
       }
     },
     footer: {
-      desc: '致力于推动中国乃至全球的数据治理标准化进程，赋能企业数字化转型，构建可信的数字未来。',
-      about_us: '关于我们',
-      expert_team: '专家团队',
-      join_us: '加入我们',
-      contact: '联系方式',
-      dcmm_consulting: 'DCMM 贯标咨询',
-      ent_governance: '企业数据治理',
-      ai_research: 'AI 治理研究',
-      contest: '数智杯大赛',
-      address: '北京市海淀区中关村南大街1号 数智大厦 A座 18层',
-      rights: '© 2024 AI数据治理研究院. All rights reserved.',
-      privacy: '隐私政策',
-      terms: '服务条款'
+      desc: 'Dedicated to promoting data governance standardization in China and globally, empowering digital transformation, and building a trusted digital future.',
+      about_us: 'About Us',
+      expert_team: 'Experts',
+      join_us: 'Join Us',
+      contact: 'Contact',
+      dcmm_consulting: 'DCMM Certification',
+      ent_governance: 'Enterprise Governance',
+      ai_research: 'AI Research',
+      contest: 'DI Cup',
+      address: '18F, Block A, Shuzhi Building, No.1 Zhongguancun South St, Haidian Dist, Beijing',
+      rights: '© 2024 AI Data Governance Institute. All rights reserved.',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service'
     }
   },
   en: {
@@ -344,9 +344,9 @@ export const translations = {
       methodology: 'Methodology',
       methodology_desc: 'Deep dive into the calculation model and weight distribution of the DCMM Index.',
       download_whitepaper: 'Download Whitepaper',
-      soe_index: 'SOE Special Index',
-      soe_desc: 'Specialized data governance assessment for State-Owned Enterprises digital transformation.',
-      public_co_index: 'Public Company Index',
+      soe_index: 'Central SOE Special Topic',
+      soe_desc: 'Specialized data governance assessment for Central and State-Owned Enterprises digital transformation.',
+      public_co_index: 'Public Company Special Topic',
       public_co_desc: 'Analysis of data asset inclusion and governance capabilities of A-share listed companies.',
       view_details: 'View Details',
       current_index: 'Current Index',
