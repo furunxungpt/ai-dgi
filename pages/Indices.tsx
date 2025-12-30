@@ -159,9 +159,6 @@ const Indices: React.FC = () => {
              className="bg-white p-6 border-l-4 border-brand-accent shadow-sm scroll-mt-24 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 group relative overflow-hidden"
              onClick={() => setShowSoeDetail(true)}
            >
-             <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Building2 size={64} />
-             </div>
              <div className="relative z-10">
                 <div className="flex items-center mb-3">
                   <Building2 className="w-6 h-6 text-brand-accent mr-2" />
